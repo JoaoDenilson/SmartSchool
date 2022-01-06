@@ -69,6 +69,7 @@ namespace SmartSchool.Controllers
             return Ok(student);
         }
 
+        // PATCH api/<StudentController>/5
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Student student)
         {

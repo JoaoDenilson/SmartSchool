@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SmartSchool.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +13,70 @@ namespace SmartSchool.Controllers
     [ApiController]
     public class TeacherController : ControllerBase
     {
+        public List<Teacher> Teachers = new List<Teacher>()
+        {
+            new Teacher(){
+                Id = 1,
+                Name = "Prof Joao"
+            },
+            new Teacher(){
+                Id = 2,
+                Name = "Prof Pedro"
+            },
+            new Teacher(){
+                Id = 3,
+                Name = "Prof Maria"
+            },
+            new Teacher(){
+                Id = 4,
+                Name = "Prof Lucas"
+            },
+        };
         // GET: api/<TeacherController>
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok("Students: Joao, Pedro, Maria, Lucas");
+            return Ok(Teachers);
         }
 
         // GET api/<TeacherController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok("value: Joao");
+            var teacher = Teachers.FirstOrDefault(a => a.Id == id);
+            if (teacher == null)
+            {
+                return BadRequest();
+            }
+            return Ok(teacher);
         }
 
         // POST api/<TeacherController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Teacher teacher)
         {
+            return Ok(teacher);
         }
 
         // PUT api/<TeacherController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, Teacher teacher)
         {
+            return Ok(teacher);
+        }
+
+        // PATCH api/<TeacherController>/5
+        [HttpPut("{id}")]
+        public IActionResult Patch(int id, Teacher teacher)
+        {
+            return Ok(teacher);
         }
 
         // DELETE api/<TeacherController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            return Ok();
         }
     }
 }
