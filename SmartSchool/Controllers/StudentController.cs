@@ -16,10 +16,21 @@ namespace SmartSchool.Controllers
     public class StudentController : ControllerBase
     {
         private readonly DataContext _context;
+        public readonly IRepository _repo;
 
-        public StudentController(DataContext context){
+        public StudentController(DataContext context,
+                                 IRepository repo)
+        {
+            _repo = repo;
             _context = context;
         }
+
+        [HttpGet("pegaResposta")]
+        public IActionResult pegaResposta()
+        {
+            return Ok("ok");
+        }
+
         // GET: api/<StudentController>
         [HttpGet]
         public IActionResult Get()
