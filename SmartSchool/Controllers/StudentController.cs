@@ -25,12 +25,6 @@ namespace SmartSchool.Controllers
             _context = context;
         }
 
-        [HttpGet("pegaResposta")]
-        public IActionResult pegaResposta()
-        {
-            return Ok("ok");
-        }
-
         // GET: api/<StudentController>
         [HttpGet]
         public IActionResult Get()
@@ -68,9 +62,12 @@ namespace SmartSchool.Controllers
         [HttpPost]
         public IActionResult Post(Student student)
         {
-            _context.Add(student);
-            _context.SaveChanges();
-            return Ok(student);
+            _repo.Add(student);
+            if (_repo.SaveChanges())
+            {
+                return Ok(student);
+            }
+            return BadRequest("Estudante não cadastrado.");
         }
 
         // PUT api/<StudentController>/5
@@ -78,11 +75,14 @@ namespace SmartSchool.Controllers
         public IActionResult Put(int id, Student student)
         {
             var st = _context.Students.AsNoTracking().FirstOrDefault(a => a.Id == id);
-            if (st == null) return BadRequest("Estudante não encontrado");
+            if (st == null) return BadRequest("Estudante não encontrado.");
 
-            _context.Update(student);
-            _context.SaveChanges();
-            return Ok(student);
+            _repo.Update(student);
+            if (_repo.SaveChanges())
+            {
+                return Ok(student);
+            }
+            return BadRequest("Estudante não atualizado.");
         }
 
         // PATCH api/<StudentController>/5
@@ -90,22 +90,28 @@ namespace SmartSchool.Controllers
         public IActionResult Patch(int id, Student student)
         {
             var st = _context.Students.AsNoTracking().FirstOrDefault(a => a.Id == id);
-            if (st == null) return BadRequest("Estudante não encontrado");
+            if (st == null) return BadRequest("Estudante não encontrado.");
 
-            _context.Update(student);
-            _context.SaveChanges();
-            return Ok(student);
+            _repo.Update(student);
+            if (_repo.SaveChanges())
+            {
+                return Ok(student);
+            }
+            return BadRequest("Estudante não atualizado.");
         }
         // DELETE api/<StudentController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var student = _context.Students.FirstOrDefault(a => a.Id == id);
-            if (student == null) return BadRequest("Estudante não encontrado");
+            if (student == null) return BadRequest("Estudante não encontrado.");
 
-            _context.Remove(student);
-            _context.SaveChanges();
-            return Ok();
+            _repo.Delete(student);
+            if (_repo.SaveChanges())
+            {
+                return Ok("Estudante deletado.");
+            }
+            return BadRequest("Estudante não deletado.");
         }
     }
 }

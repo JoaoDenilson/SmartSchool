@@ -16,9 +16,11 @@ namespace SmartSchool.Controllers
     public class TeacherController : ControllerBase
     {
         private readonly DataContext _context;
+        public readonly IRepository _repo;
 
-        public TeacherController(DataContext context)
+        public TeacherController(DataContext context, IRepository repo)
         {
+            _repo = repo;
             _context = context;
         }
 
@@ -59,9 +61,12 @@ namespace SmartSchool.Controllers
         [HttpPost]
         public IActionResult Post(Teacher teacher)
         {
-            _context.Add(teacher);
-            _context.SaveChanges();
-            return Ok(teacher);
+            _repo.Add(teacher);
+            if (_repo.SaveChanges())
+            {
+                return Ok(teacher);
+            }
+            return BadRequest("Professor não cadastrado");
         }
 
         // PUT api/<TeacherController>/5
@@ -71,9 +76,12 @@ namespace SmartSchool.Controllers
             var th = _context.Teachers.AsNoTracking().FirstOrDefault(a => a.Id == id);
             if (th == null) return BadRequest("Professor não encontrado");
 
-            _context.Update(teacher);
-            _context.SaveChanges();
-            return Ok(teacher);
+            _repo.Update(teacher);
+            if (_repo.SaveChanges())
+            {
+                return Ok(teacher);
+            }
+            return BadRequest("Professor não atualizado");
         }
 
         // PATCH api/<TeacherController>/5
@@ -83,9 +91,12 @@ namespace SmartSchool.Controllers
             var th = _context.Teachers.AsNoTracking().FirstOrDefault(a => a.Id == id);
             if (th == null) return BadRequest("Professor não encontrado");
 
-            _context.Update(teacher);
-            _context.SaveChanges();
-            return Ok(teacher);
+            _repo.Update(teacher);
+            if (_repo.SaveChanges())
+            {
+                return Ok(teacher);
+            }
+            return BadRequest("Professor não atualizado");
         }
 
         // DELETE api/<TeacherController>/5
@@ -95,9 +106,11 @@ namespace SmartSchool.Controllers
             var teacher = _context.Teachers.FirstOrDefault(a => a.Id == id);
             if (teacher == null) return BadRequest("Professor não encontrado");
 
-            _context.Remove(teacher);
-            _context.SaveChanges();
-            return Ok();
+            _repo.Delete(teacher);
+            if (_repo.SaveChanges())
+            {
+                return Ok("Professor deletado");
+            }
+            return BadRequest("Professor não deletado");
         }
-    }
 }
