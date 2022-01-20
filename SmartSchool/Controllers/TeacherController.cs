@@ -113,4 +113,5 @@ namespace SmartSchool.Controllers
             }
             return BadRequest("Professor não deletado");
         }
+    }
 }
