@@ -85,7 +85,7 @@ namespace SmartSchool.Controllers
         }
 
         // PATCH api/<TeacherController>/5
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public IActionResult Patch(int id, Teacher teacher)
         {
             var th = _context.Teachers.AsNoTracking().FirstOrDefault(a => a.Id == id);
