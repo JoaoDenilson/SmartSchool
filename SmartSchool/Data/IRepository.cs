@@ -9,14 +9,14 @@ namespace SmartSchool.Data
     public interface IRepository
     {
         //Student
-        Student[] GetAllStudents();
-        Student[] GetAllStudentsByDisciplineId();
-        Student[] GetStudentId();
+        Student[] GetAllStudents(bool includeTeacher = false);
+        Student[] GetAllStudentsByDisciplineId(int disciplineId, bool includeTeacher = false);
+        Student GetStudentById(int studentId, bool includeTeacher = false);
 
         //Teacher
-        Teacher[] GetAllTeachers();
-        Teacher[] GetAllTeacherByDisciplineId();
-        Teacher[] GetTeachertId();
+        Teacher[] GetAllTeachers(bool includeStudent = false);
+        Teacher[] GetAllTeacherByDisciplineId(int disciplineId, bool includeStudent = false);
+        Teacher GetTeacherId(int teacherId, bool includeTeacher = false);
 
         void Add<T>(T entity)where T: class;
         void Update<T>(T entity) where T : class;

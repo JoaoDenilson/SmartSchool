@@ -22,7 +22,7 @@ namespace SmartSchool.Data
             if (includeTeacher)
             {
                 query = query.Include(a => a.StudentsDiscipline)
-                                .ThenInclude(add => add.Discipline)
+                                .ThenInclude(sd => sd.Discipline)
                                 .ThenInclude(d => d.Teacher);
             }
 
@@ -38,7 +38,7 @@ namespace SmartSchool.Data
             if (includeTeacher)
             {
                 query = query.Include(a => a.StudentsDiscipline)
-                             .ThenInclude(add => add.Discipline)
+                             .ThenInclude(sd => sd.Discipline)
                              .ThenInclude(d => d.Teacher);
             }
 
@@ -55,31 +55,68 @@ namespace SmartSchool.Data
 
             if (includeTeacher)
             {
-                query = query.Include(a => a.StudentsDiscipline)
-                             .ThenInclude(add => add.Discipline)
+                query = query.Include(s => s.StudentsDiscipline)
+                             .ThenInclude(sd => sd.Discipline)
                              .ThenInclude(d => d.Teacher);
             }
 
             query = query.AsNoTracking()
-                         .OrderBy(a => a.Id)
+                         .OrderBy(s => s.Id)
                          .Where(s => s.Id == studentId);
 
             return query.FirstOrDefault();
         }
 
-        public Teacher[] GetAllTeachers()
+        public Teacher[] GetAllTeachers(bool includeStudent = false)
         {
-            throw new NotImplementedException();
+            IQueryable<Teacher> query = _context.Teachers;
+
+            if (includeStudent)
+            {
+                query = query.Include(t => t.Disciplines)
+                             .ThenInclude(d => d.StudentsDiscipline)
+                             .ThenInclude(sd => sd.Student);
+            }
+
+            query = query.AsNoTracking().OrderBy(t => t.Id);
+
+            return query.ToArray();
         }
 
-        public Teacher[] GetAllTeacherByDisciplineId()
+        public Teacher[] GetAllTeacherByDisciplineId(int disciplineId, bool includeStudent = false)
         {
-            throw new NotImplementedException();
+            IQueryable<Teacher> query = _context.Teachers;
+
+            if (includeStudent)
+            {
+                query = query.Include(t => t.Disciplines)
+                             .ThenInclude(d => d.StudentsDiscipline)
+                             .ThenInclude(sd => sd.Student);
+            }
+
+            query = query.AsNoTracking()
+                         .OrderBy(s => s.Id)
+                         .Where(s => s.Disciplines.Any(d => d.StudentsDiscipline.Any(sd => sd.DisciplineId == disciplineId)));
+
+            return query.ToArray();
         }
 
-        public Teacher[] GetTeachertId()
+        public Teacher GetTeacherId(int teacherId, bool includeTeacher = false)
         {
-            throw new NotImplementedException();
+            IQueryable<Teacher> query = _context.Teachers;
+
+            if (includeTeacher)
+            {
+                query = query.Include(t => t.Disciplines)
+                             .ThenInclude(d => d.StudentsDiscipline)
+                             .ThenInclude(sd => sd.Student);
+            }
+
+            query = query.AsNoTracking()
+                         .OrderBy(s => s.Id)
+                         .Where(t => t.Id == teacherId);
+
+            return query.FirstOrDefault();
         }
 
         public void Add<T>(T entity) where T : class
@@ -102,5 +139,6 @@ namespace SmartSchool.Data
             return (_context.SaveChanges() > 0);
         }
 
+    
     }
 }
