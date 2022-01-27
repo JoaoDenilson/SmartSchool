@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace SmartSchool.Data
 {
@@ -22,6 +23,9 @@ namespace SmartSchool.Data
         {
             builder.Entity<StudentDiscipline>()
                 .HasKey(SD => new { SD.StudentId, SD.DisciplineId });
+
+            builder.Entity<StudentCourse>()
+                .HasKey(SC => new { SC.StudentId, SC.CourseId});
 
             builder.Entity<Teacher>()
                 .HasData(new List<Teacher>(){
@@ -55,13 +59,13 @@ namespace SmartSchool.Data
 
             builder.Entity<Student>()
                 .HasData(new List<Student>(){
-                    new Student(1, 1, "Marta", "Kent", "33225555", DateTime.Parse("05/28/2005")),
-                    new Student(2, 2, "Paula", "Isabela", "3354288", DateTime.Parse("05/28/2005")),
-                    new Student(3, 3, "Laura", "Antonia", "55668899", DateTime.Parse("05/28/2005")),
-                    new Student(4, 4, "Luiza", "Maria", "6565659", DateTime.Parse("05/28/2005")),
-                    new Student(5, 5, "Lucas", "Machado", "565685415", DateTime.Parse("05/28/2005")),
-                    new Student(6, 6, "Pedro", "Alvares", "456454545", DateTime.Parse("05/28/2005")),
-                    new Student(7, 7, "Paulo", "José", "9874512", DateTime.Parse("05/28/2005"))
+                    new Student(1, 1, "Marta", "Kent", "33225555", DateTime.ParseExact("05/28/2005", "MM/dd/yyyy", CultureInfo.InvariantCulture)),
+                    new Student(2, 2, "Paula", "Isabela", "3354288", DateTime.ParseExact("05/28/2005", "MM/dd/yyyy", CultureInfo.InvariantCulture)),
+                    new Student(3, 3, "Laura", "Antonia", "55668899",DateTime.ParseExact("05/28/2005", "MM/dd/yyyy", CultureInfo.InvariantCulture)),
+                    new Student(4, 4, "Luiza", "Maria", "6565659", DateTime.ParseExact("05/28/2005", "MM/dd/yyyy", CultureInfo.InvariantCulture)),
+                    new Student(5, 5, "Lucas", "Machado", "565685415", DateTime.ParseExact("05/28/2005", "MM/dd/yyyy", CultureInfo.InvariantCulture)),
+                    new Student(6, 6, "Pedro", "Alvares", "456454545", DateTime.ParseExact("05/28/2005", "MM/dd/yyyy", CultureInfo.InvariantCulture)),
+                    new Student(7, 7, "Paulo", "José", "9874512", DateTime.ParseExact("05/28/2005", "MM/dd/yyyy", CultureInfo.InvariantCulture)),
                 });
 
             builder.Entity<StudentDiscipline>()
