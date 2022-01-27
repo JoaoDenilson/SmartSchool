@@ -5,20 +5,19 @@ using System.Threading.Tasks;
 
 namespace SmartSchool.Models
 {
-    public class StudentDiscipline
+    public class StudentCourse
     {
-        public StudentDiscipline() { }
-        public StudentDiscipline(int studentId, int disciplineId)
+        public StudentCourse() { }
+        public StudentCourse(int studentId, int courseId)
         {
             this.StudentId = studentId;
-            this.DisciplineId = disciplineId;
+            this.CourseId = courseId;
         }
         public DateTime DateStart { get; set; } = DateTime.Now;
         public DateTime? DateEnd { get; set; }
-        public int? FinalGrade { get; set; } = null;
         public int StudentId { get; set; }
         public Student Student { get; set; }
-        public int DisciplineId { get; set; }
-        public Discipline Discipline { get; set; }
+        public int CourseId { get; set; }
+        public Course Course { get; set; }
     }
 }
