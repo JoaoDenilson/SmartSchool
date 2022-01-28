@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.Data;
+using SmartSchool.Dtos;
 using SmartSchool.Models;
 using System;
 using System.Collections.Generic;
@@ -26,8 +27,18 @@ namespace SmartSchool.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repo.GetAllStudents(true);
-            return Ok(result);
+            var students = _repo.GetAllStudents(true);
+            var studentsReturn = new List<StudentDto>();
+
+            foreach(var item in students)
+            {
+                studentsReturn.Add(new StudentDto()
+                {
+                    Id = Student.Id,
+
+                });
+            }
+            return Ok(students);
         }
 
         // GET api/<StudentController>/5
