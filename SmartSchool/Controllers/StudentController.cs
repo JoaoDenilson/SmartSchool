@@ -30,15 +30,20 @@ namespace SmartSchool.Controllers
             var students = _repo.GetAllStudents(true);
             var studentsReturn = new List<StudentDto>();
 
-            foreach(var item in students)
+            foreach(var student in students)
             {
                 studentsReturn.Add(new StudentDto()
                 {
-                    Id = Student.Id,
-
+                    Id = student.Id,
+                    RegistrationId = student.RegistrationId,
+                    Name = $"{student.Name} {student.Name}",
+                    Phone = student.Phone,
+                    DateBirth = student.DateBirth,
+                    DateStart = student.DateStart,
+                    Active = student.Active
                 });
             }
-            return Ok(students);
+            return Ok(studentsReturn);
         }
 
         // GET api/<StudentController>/5
