@@ -11,7 +11,7 @@ namespace SmartSchool.Dtos
         public int RegistrationId { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
-        public DateTime DateBirth { get; set; }
+        public int Age { get; set; }
         public DateTime DateStart { get; set; }
         public bool Active { get; set; } = true;
     }

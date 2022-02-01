@@ -16,6 +16,10 @@ namespace SmartSchool.Helpers
                 .ForMember(
                     dest => dest.Name,
                     opt => opt.MapFrom(src => $"{src.Name} {src.Name}")
+                )
+                .ForMember(
+                    dest => dest.Age,
+                    opt => opt.MapFrom(src => src.DateBirth.GetCurrentAge())
                 );
         }
     }
