@@ -15,12 +15,16 @@ namespace SmartSchool.Helpers
             CreateMap<Student, StudentDto>()
                 .ForMember(
                     dest => dest.Name,
-                    opt => opt.MapFrom(src => $"{src.Name} {src.Name}")
+                    opt => opt.MapFrom(src => $"{src.Name} {src.LastName}")
                 )
                 .ForMember(
                     dest => dest.Age,
                     opt => opt.MapFrom(src => src.DateBirth.GetCurrentAge())
                 );
+
+            CreateMap<StudentDto, Student>();
+
+            CreateMap<Student, StudentRegisterDto>().ReverseMap();
         }
     }
 }

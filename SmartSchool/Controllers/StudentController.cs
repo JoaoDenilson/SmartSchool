@@ -43,9 +43,12 @@ namespace SmartSchool.Controllers
             var student = _repo.GetStudentById(id, false);
             if (student == null)
             {
-                return BadRequest();
+                return BadRequest("Estudante não encontrado.");
             }
-            return Ok(student);
+
+            var studentDto = _mapper.Map<StudentDto>(student);
+
+            return Ok(studentDto);
         }
 
         // GET api/<StudentController>/5
@@ -64,42 +67,48 @@ namespace SmartSchool.Controllers
 
         // POST api/<StudentController>
         [HttpPost]
-        public IActionResult Post(Student student)
+        public IActionResult Post(StudentRegisterDto model)
         {
+            var student = _mapper.Map<Student>(model);
+
             _repo.Add(student);
             if (_repo.SaveChanges())
             {
-                return Ok(student);
+                return Created($"/api/student/{model.Id}", _mapper.Map<StudentDto>(student));
             }
             return BadRequest("Estudante não cadastrado.");
         }
 
         // PUT api/<StudentController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Student student)
+        public IActionResult Put(int id, StudentRegisterDto model)
         {
-            var st = _repo.GetStudentById(id);
-            if (st == null) return BadRequest("Estudante não encontrado.");
+            var student = _repo.GetStudentById(id);
+            if (student == null) return BadRequest("Estudante não encontrado.");
+
+            _mapper.Map(model, student);
 
             _repo.Update(student);
             if (_repo.SaveChanges())
             {
-                return Ok(student);
+                return Created($"/api/student/{model.Id}", _mapper.Map<StudentDto>(student));
             }
             return BadRequest("Estudante não atualizado.");
         }
 
         // PATCH api/<StudentController>/5
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Student student)
+        public IActionResult Patch(int id, StudentRegisterDto model)
         {
-            var st = _repo.GetStudentById(id);
-            if (st == null) return BadRequest("Estudante não encontrado.");
+            var student = _repo.GetStudentById(id);
+            if (student == null) return BadRequest("Estudante não encontrado.");
+
+            _mapper.Map(model, student);
 
             _repo.Update(student);
             if (_repo.SaveChanges())
             {
-                return Ok(student);
+                return Created($"/api/student/{model.Id}", _mapper.Map<StudentDto>(student));
             }
             return BadRequest("Estudante não atualizado.");
         }
