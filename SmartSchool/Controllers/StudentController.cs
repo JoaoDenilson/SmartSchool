@@ -13,14 +13,21 @@ using System.Threading.Tasks;
 
 namespace SmartSchool.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
     {
         public readonly IRepository _repo;
-
         public readonly IMapper _mapper;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="repo"></param>
+        /// <param name="mapper"></param>
         public StudentController(IRepository repo, IMapper mapper)
         {
             _repo = repo;
@@ -28,6 +35,10 @@ namespace SmartSchool.Controllers
         }
 
         // GET: api/<StudentController>
+        /// <summary>
+        /// Método responsável para retornar todos os meus alunos.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -36,7 +47,12 @@ namespace SmartSchool.Controllers
             return Ok(_mapper.Map<IEnumerable<StudentDto>>(students));
         }
 
-        // GET api/<StudentController>/5
+        // GET api/<StudentController>
+        /// <summary>
+        /// Método responsável por retorna um aluno por meio do ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {

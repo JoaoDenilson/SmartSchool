@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartSchool</name>
+    </assembly>
+    <members>
+        <member name="T:SmartSchool.Controllers.StudentController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartSchool.Controllers.StudentController.#ctor(SmartSchool.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SmartSchool.Controllers.StudentController.Get">
+            <summary>
+            Método responsável para retornar todos os meus alunos.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Controllers.StudentController.GetById(System.Int32)">
+            <summary>
+            Método responsável por retorna um aluno por meio do ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SmartSchool.Dtos.StudentRegisterDto">
+            <summary>
+            Este é o DTOO de Aluno para Registrar
+            </summary>
+        </member>
+        <member name="P:SmartSchool.Dtos.StudentRegisterDto.Id">
+            <summary>
+            Identificador e chave primária do banco
+            </summary>
+        </member>
+        <member name="P:SmartSchool.Dtos.StudentRegisterDto.RegistrationId">
+            <summary>
+            Chave do Aluno, para outros negócios na Instituição.
+            </summary>
+        </member>
+    </members>
+</doc>

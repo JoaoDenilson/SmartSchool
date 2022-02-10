@@ -16,9 +16,7 @@ namespace SmartSchool.Data
         public DbSet<Course> Courses { get; set; }
         public DbSet<Discipline> Disciplines { get; set; }
         public DbSet<StudentDiscipline> StudentsDiscipline { get; set; }
-
         public DbSet<StudentCourse> StudentsCourses { get; set; }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<StudentDiscipline>()

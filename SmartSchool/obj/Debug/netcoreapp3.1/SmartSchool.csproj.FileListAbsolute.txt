@@ -124,3 +124,9 @@ C:\Projects_C#\SmartSchool\SmartSchool\bin\Debug\netcoreapp3.1\Microsoft.AspNetC
 C:\Projects_C#\SmartSchool\SmartSchool\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Projects_C#\SmartSchool\SmartSchool\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Projects_C#\SmartSchool\SmartSchool\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Projects_C#\SmartSchool\SmartSchool\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Projects_C#\SmartSchool\SmartSchool\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Projects_C#\SmartSchool\SmartSchool\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Projects_C#\SmartSchool\SmartSchool\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Projects_C#\SmartSchool\SmartSchool\obj\Debug\netcoreapp3.1\SmartSchool.MvcApplicationPartsAssemblyInfo.cs
+C:\Projects_C#\SmartSchool\SmartSchool\bin\Debug\netcoreapp3.1\SmartSchool.xml

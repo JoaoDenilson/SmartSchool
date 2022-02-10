@@ -5,9 +5,18 @@ using System.Threading.Tasks;
 
 namespace SmartSchool.Dtos
 {
+    /// <summary>
+    /// Este é o DTOO de Aluno para Registrar
+    /// </summary>
     public class StudentRegisterDto
-    {
+    {   
+        /// <summary>
+        /// Identificador e chave primária do banco
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// Chave do Aluno, para outros negócios na Instituição.
+        /// </summary>
         public int RegistrationId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }

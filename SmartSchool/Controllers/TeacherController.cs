@@ -35,7 +35,7 @@ namespace SmartSchool.Controllers
         }
 
         // GET api/<TeacherController>/5
-        [HttpGet("byId/{id}")]
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             var teacher = _repo.GetTeacherId(id, true);
@@ -44,7 +44,7 @@ namespace SmartSchool.Controllers
                 return BadRequest("Professor não encontrado.");
             }
 
-            var teacherDto = _mapper.Map<StudentDto>(teacher);
+            var teacherDto = _mapper.Map<TeacherDto>(teacher);
 
             return Ok(teacherDto);
         }
