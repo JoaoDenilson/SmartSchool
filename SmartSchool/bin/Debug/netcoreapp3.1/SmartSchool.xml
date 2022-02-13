@@ -18,16 +18,40 @@
         </member>
         <member name="M:SmartSchool.Controllers.StudentController.Get">
             <summary>
-            Método responsável para retornar todos os meus alunos.
+            Método responsável para retornar todos os meus Alunos.
             </summary>
             <returns></returns>
         </member>
         <member name="M:SmartSchool.Controllers.StudentController.GetById(System.Int32)">
             <summary>
-            Método responsável por retorna um aluno por meio do ID
+            Método responsável por retorna um Aluno por meio do ID
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:SmartSchool.Controllers.TeacherController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartSchool.Controllers.TeacherController.#ctor(SmartSchool.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SmartSchool.Controllers.TeacherController.Get">
+            <summary>
+            Método responsável para retornar todos os meus Professores.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Controllers.TeacherController.Get(System.Int32)">
+            <summary>
+            Método responsável por retorna um Professor por meio do ID
+            </summary>
+            <param name="id"></param>
         </member>
         <member name="T:SmartSchool.Dtos.StudentRegisterDto">
             <summary>
