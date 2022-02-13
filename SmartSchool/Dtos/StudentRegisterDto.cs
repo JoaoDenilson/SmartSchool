@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace SmartSchool.Dtos
 {
     /// <summary>
-    /// Este é o DTOO de Aluno para Registrar
+    /// Este é o DTO de Aluno para Registrar
     /// </summary>
     public class StudentRegisterDto
     {   

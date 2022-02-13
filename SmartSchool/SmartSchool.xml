@@ -31,7 +31,7 @@
         </member>
         <member name="T:SmartSchool.Dtos.StudentRegisterDto">
             <summary>
-            Este é o DTOO de Aluno para Registrar
+            Este é o DTO de Aluno para Registrar
             </summary>
         </member>
         <member name="P:SmartSchool.Dtos.StudentRegisterDto.Id">
@@ -42,6 +42,21 @@
         <member name="P:SmartSchool.Dtos.StudentRegisterDto.RegistrationId">
             <summary>
             Chave do Aluno, para outros negócios na Instituição.
+            </summary>
+        </member>
+        <member name="T:SmartSchool.Dtos.TeacherRegisterDto">
+            <summary>
+            Este é o DTO de Professor para Registrar
+            </summary>
+        </member>
+        <member name="P:SmartSchool.Dtos.TeacherRegisterDto.Id">
+            <summary>
+            Identificador e chave primária do banco
+            </summary>
+        </member>
+        <member name="P:SmartSchool.Dtos.TeacherRegisterDto.RegistrationId">
+            <summary>
+            Chave do Professor, para outros negócios na Instituição.
             </summary>
         </member>
     </members>

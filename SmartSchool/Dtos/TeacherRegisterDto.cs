@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace SmartSchool.Dtos
 {
+    /// <summary>
+    /// Este é o DTO de Professor para Registrar
+    /// </summary>
     public class TeacherRegisterDto
     {
+        /// <summary>
+        /// Identificador e chave primária do banco
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// Chave do Professor, para outros negócios na Instituição.
+        /// </summary>
         public int RegistrationId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }

@@ -34,11 +34,11 @@ namespace SmartSchool.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/<StudentController>
         /// <summary>
-        /// Método responsável para retornar todos os meus alunos.
+        /// Método responsável para retornar todos os meus Alunos.
         /// </summary>
         /// <returns></returns>
+        // GET: api/<StudentController>
         [HttpGet]
         public IActionResult Get()
         {
@@ -49,7 +49,7 @@ namespace SmartSchool.Controllers
 
         // GET api/<StudentController>
         /// <summary>
-        /// Método responsável por retorna um aluno por meio do ID
+        /// Método responsável por retorna um Aluno por meio do ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -67,21 +67,6 @@ namespace SmartSchool.Controllers
             return Ok(studentDto);
         }
 
-        // GET api/<StudentController>/5
-        //[HttpGet("ByName")]
-        //public IActionResult GetByName(string name, string lastName)
-        //{
-        //    var student = _context.Students.FirstOrDefault(a => 
-        //        a.Name.Contains(name) && a.LastName.Contains(lastName)
-        //    );
-        //    if (student == null)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    return Ok(student);
-        //}
-
-        // POST api/<StudentController>
         [HttpPost]
         public IActionResult Post(StudentRegisterDto model)
         {
@@ -114,17 +99,18 @@ namespace SmartSchool.Controllers
 
         // PATCH api/<StudentController>/5
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, StudentRegisterDto model)
+        public IActionResult Patch(int id, StudentPatchDto model)
         {
             var student = _repo.GetStudentById(id);
             if (student == null) return BadRequest("Estudante não encontrado.");
+            model.Id = id;
 
             _mapper.Map(model, student);
 
             _repo.Update(student);
             if (_repo.SaveChanges())
             {
-                return Created($"/api/student/{model.Id}", _mapper.Map<StudentDto>(student));
+                return Created($"/api/student/{model.Id}", _mapper.Map<StudentPatchDto>(student));
             }
             return BadRequest("Estudante não atualizado.");
         }

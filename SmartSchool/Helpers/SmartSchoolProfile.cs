@@ -24,6 +24,8 @@ namespace SmartSchool.Helpers
 
             CreateMap<StudentDto, Student>();
 
+            CreateMap<StudentPatchDto, Student>().ReverseMap();
+
             CreateMap<Student, StudentRegisterDto>().ReverseMap();
 
             CreateMap<Teacher, TeacherDto>()
@@ -35,6 +37,8 @@ namespace SmartSchool.Helpers
             CreateMap<Teacher, TeacherRegisterDto>().ReverseMap();
 
             CreateMap<TeacherDto, Teacher>();
+
+            CreateMap<TeacherPatchDto, Teacher>().ReverseMap();
         }
     }
 }
