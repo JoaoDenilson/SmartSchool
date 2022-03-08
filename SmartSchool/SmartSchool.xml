@@ -18,13 +18,43 @@
         </member>
         <member name="M:SmartSchool.Controllers.StudentController.Get">
             <summary>
-            Método responsável para retornar todos os meus Alunos.
+            Método responsável por retornar todos os Alunos.
             </summary>
             <returns></returns>
         </member>
         <member name="M:SmartSchool.Controllers.StudentController.GetById(System.Int32)">
             <summary>
             Método responsável por retorna um Aluno por meio do ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Controllers.StudentController.Post(SmartSchool.Dtos.StudentRegisterDto)">
+            <summary>
+            Método responsável por registar um Aluno
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Controllers.StudentController.Put(System.Int32,SmartSchool.Dtos.StudentRegisterDto)">
+            <summary>
+            Método responsável por atualizar um Aluno
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Controllers.StudentController.Patch(System.Int32,SmartSchool.Dtos.StudentPatchDto)">
+            <summary>
+            Método responsável por atualizar um ou varios dados de um Aluno
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Controllers.StudentController.Delete(System.Int32)">
+            <summary>
+            Método responsável por deletar um Aluno
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -43,7 +73,7 @@
         </member>
         <member name="M:SmartSchool.Controllers.TeacherController.Get">
             <summary>
-            Método responsável para retornar todos os meus Professores.
+            Método responsável por retornar todos os Professores.
             </summary>
             <returns></returns>
         </member>
@@ -52,6 +82,36 @@
             Método responsável por retorna um Professor por meio do ID
             </summary>
             <param name="id"></param>
+        </member>
+        <member name="M:SmartSchool.Controllers.TeacherController.Post(SmartSchool.Dtos.TeacherRegisterDto)">
+            <summary>
+            Método responsável por registar um Professor
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Controllers.TeacherController.Put(System.Int32,SmartSchool.Dtos.TeacherRegisterDto)">
+            <summary>
+            Método responsável por atualizar um Professor
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Controllers.TeacherController.Patch(System.Int32,SmartSchool.Dtos.TeacherPatchDto)">
+            <summary>
+            Método responsável por atualizar um ou varios dados de um Professor
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.Controllers.TeacherController.Delete(System.Int32)">
+            <summary>
+            Método responsável por deletar um Professor
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="T:SmartSchool.Dtos.StudentRegisterDto">
             <summary>

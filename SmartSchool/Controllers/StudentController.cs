@@ -35,7 +35,7 @@ namespace SmartSchool.Controllers
         }
 
         /// <summary>
-        /// Método responsável para retornar todos os meus Alunos.
+        /// Método responsável por retornar todos os Alunos
         /// </summary>
         /// <returns></returns>
         // GET: api/<StudentController>
@@ -66,7 +66,11 @@ namespace SmartSchool.Controllers
 
             return Ok(studentDto);
         }
-
+        /// <summary>
+        /// Método responsável por registar um Aluno
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(StudentRegisterDto model)
         {
@@ -81,6 +85,12 @@ namespace SmartSchool.Controllers
         }
 
         // PUT api/<StudentController>/5
+        /// <summary>
+        /// Método responsável por atualizar um Aluno
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, StudentRegisterDto model)
         {
@@ -98,6 +108,12 @@ namespace SmartSchool.Controllers
         }
 
         // PATCH api/<StudentController>/5
+        /// <summary>
+        /// Método responsável por atualizar um ou varios dados de um Aluno
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, StudentPatchDto model)
         {
@@ -115,6 +131,11 @@ namespace SmartSchool.Controllers
             return BadRequest("Estudante não atualizado.");
         }
         // DELETE api/<StudentController>/5
+        /// <summary>
+        /// Método responsável por deletar um Aluno
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
